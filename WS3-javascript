@@ -1,10 +1,168 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
-    <title>Basic HTML Events</title>
+    <title>All Event Exercises</title>
+    <style>
+        body { font-family: Arial; }
+        section { margin-bottom: 40px; padding: 10px; border-bottom: 2px solid #ccc; }
+    </style>
 </head>
+
 <body onload="pageLoaded()">
 
-<h1>Common Events Demonstration</h1>
+<h1>JavaScript Event Exercises (All in One)</h1>
 
-<input type="text" onchange="alert('Input') 
+<!-- ========================= -->
+<!-- Exercise 1 -->
+<!-- ========================= -->
+<section>
+<h2>Exercise 1: Basic Events</h2>
+
+<input type="text" onchange="alert('Input changed!')">
+
+<button onclick="alert('Button clicked!')">Click Me</button>
+
+<p onmouseover="this.style.color='red'" 
+   onmouseout="this.style.color='black'">
+   Hover over me!
+</p>
+</section>
+
+<!-- ========================= -->
+<!-- Exercise 2 -->
+<!-- ========================= -->
+<section>
+<h2>Exercise 2: Event Attributes</h2>
+
+<form onsubmit="alert('Form submitted!'); return false;">
+    <input type="text" placeholder="Enter name">
+    <button type="submit">Submit</button>
+</form>
+
+<br>
+
+<button onmouseover="alert('Mouse over!')" 
+        onmouseout="alert('Mouse out!')">
+    Hover Button
+</button>
+</section>
+
+<!-- ========================= -->
+<!-- Exercise 3 -->
+<!-- ========================= -->
+<section>
+<h2>Exercise 3: Named Functions</h2>
+
+<button onclick="showMessage()">Click Me</button>
+</section>
+
+<!-- ========================= -->
+<!-- Exercise 4 -->
+<!-- ========================= -->
+<section>
+<h2>Exercise 4: Common Events</h2>
+
+<select onchange="alert('Selection changed!')">
+    <option>Option 1</option>
+    <option>Option 2</option>
+</select>
+
+<br><br>
+
+<img src="https://via.placeholder.com/150"
+     onmouseover="this.src='https://via.placeholder.com/150/ff0000'"
+     onmouseout="this.src='https://via.placeholder.com/150'"
+     alt="Hover Image">
+
+<br><br>
+
+<input type="text" onkeydown="alert('Key pressed!')">
+</section>
+
+<!-- ========================= -->
+<!-- Exercise 5 -->
+<!-- ========================= -->
+<section>
+<h2>Exercise 5: Add & Remove Event Listener</h2>
+
+<h3 id="myH1">Click me!</h3>
+<button onclick="removeListener()">Remove Listener</button>
+</section>
+
+<!-- ========================= -->
+<!-- Exercise 6 -->
+<!-- ========================= -->
+<section>
+<h2>Exercise 6: Multiple Listeners</h2>
+
+<button id="multiBtn">Click for Multiple</button>
+</section>
+
+<!-- ========================= -->
+<!-- Exercise 7 -->
+<!-- ========================= -->
+<section>
+<h2>Exercise 7: Browser Compatibility</h2>
+
+<button id="compatBtn">Compatible Click</button>
+</section>
+
+<script>
+// =========================
+// Exercise 1 (onload)
+// =========================
+function pageLoaded() {
+    document.body.innerHTML += "<p>Page fully loaded!</p>";
+}
+
+// =========================
+// Exercise 3
+// =========================
+function showMessage() {
+    alert("Button clicked using a named function!");
+}
+
+// =========================
+// Exercise 5
+// =========================
+let element = document.getElementById("myH1");
+
+function sayHello() {
+    alert("Hello World!");
+}
+
+element.addEventListener("click", sayHello);
+
+function removeListener() {
+    element.removeEventListener("click", sayHello);
+    console.log("Listener removed!");
+}
+
+// =========================
+// Exercise 6
+// =========================
+let multiBtn = document.getElementById("multiBtn");
+
+multiBtn.onclick = function() { alert("Second!"); };
+
+multiBtn.addEventListener("click", function() { alert("Third!"); });
+multiBtn.addEventListener("click", function() { alert("Fourth!"); });
+
+// =========================
+// Exercise 7
+// =========================
+let compatBtn = document.getElementById("compatBtn");
+
+function compatClick() {
+    alert("Compatible!");
+}
+
+if (window.addEventListener) {
+    compatBtn.addEventListener("click", compatClick);
+} else if (window.attachEvent) {
+    compatBtn.attachEvent("onclick", compatClick);
+}
+</script>
+
+</body>
+</html>
